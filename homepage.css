@@ -1,0 +1,218 @@
+/* مخفی کردن اسکرول در تمام مرورگرها */
+html {
+    -ms-overflow-style: none;  /* IE و Edge قدیمی */
+    scrollbar-width: none;     /* Firefox */
+}
+
+html::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari, Opera, Edge جدید */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Tahoma", "Segoe UI", sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 450px;
+  margin: 50px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 25px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 24px;
+  color: #333;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+select,
+button {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 2px solid #e0e0e0;
+  outline: none;
+  transition: 0.3s;
+  font-family: inherit;
+}
+
+select:focus {
+  border-color: #667eea;
+}
+
+button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 14px;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* باکس آب و هوا */
+.weather-box {
+  display: none;
+  margin-top: 25px;
+  padding: 20px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  text-align: center;
+  animation: fadeIn 0.5s ease;
+  max-width: 400px;
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.weather-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.weather-header h2 {
+  color: white;
+  margin: 0;
+  font-size: 22px;
+}
+
+.weather-icon {
+  width: 60px;
+  height: 60px;
+}
+
+.temp-main {
+  font-size: 64px;
+  font-weight: bold;
+  margin: 10px 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.description {
+  font-size: 20px;
+  margin: 10px 0;
+  text-transform: capitalize;
+  font-weight: 500;
+}
+
+.weather-details {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 10px 15px;
+  border-radius: 12px;
+  font-size: 15px;
+}
+
+.detail-icon {
+  font-size: 22px;
+}
+
+/* حالت لودینگ */
+.loading {
+  text-align: center;
+  padding: 20px;
+}
+
+.spinner {
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top: 3px solid white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 15px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* خطا */
+.error {
+  text-align: center;
+  padding: 20px;
+}
+
+.error span {
+  font-size: 48px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.error p {
+  margin: 5px 0;
+  font-size: 16px;
+}
+
+.error small {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+@media (max-width: 500px) {
+  .container {
+    margin: 20px 15px;
+    padding: 20px;
+  }
+
+  .temp-main {
+    font-size: 48px;
+  }
+
+  .weather-header h2 {
+    font-size: 18px;
+  }
+}
